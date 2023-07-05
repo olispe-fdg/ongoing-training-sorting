@@ -40,9 +40,34 @@ const selectionSort = (arr) => {
     return copy;
 }
 
-const algorithms = {selectionSort};
+/**
+ * Insertion sort
+ * @param arr {number[]}
+ * @returns {number[]}
+ */
+const insertionSort = (arr) => {
+    const copy = [...arr];
 
-const data = [3, 2, 1];
+    let i = 1;
+    for (; i < copy.length; i++) {
+        if (copy[i] < copy[i - 1]) {
+            swap(copy, i, i - 1);
+
+            if (i > 1) {
+                i -= 2; // Subtract 2 as for loop will add 1
+            }
+        }
+    }
+
+    return copy;
+}
+
+const algorithms = {
+    selectionSort,
+    insertionSort
+};
+
+const data = [4, 2, 1, 3];
 
 Object.entries(algorithms).forEach(([name, sort]) => {
     const sorted = sort(data);
