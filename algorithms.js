@@ -46,6 +46,8 @@ const data = [3, 2, 1];
 
 Object.entries(algorithms).forEach(([name, sort]) => {
     const sorted = sort(data);
-    console.log(sorted);
-    console.log(`${name} sorted correctly: ${isSorted(sorted)}`);
+    console.log(`-- ${name} --`);
+    console.log(`  Input : ${data}`);
+    console.log(` Output : ${sorted}`);
+    console.log(`Correct : ${isSorted(sorted)}\n`);
 })
