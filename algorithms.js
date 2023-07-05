@@ -1,6 +1,6 @@
 const integers10k = require("./integers-10k.json");
 const integers100k = require("./integers-100k.json");
-const integers1m = require("./integers-1m.json");
+const integers250k = require("./integers-250k.json");
 
 /**
  * Asserts that an array is sorted in ascending order
@@ -116,7 +116,7 @@ Object.entries(algorithms).forEach(([name, sort]) => {
     if (correct && process.env.RUN_BENCHMARKS) {
         benchmarkFunction("10k integers", sort, integers10k);
         benchmarkFunction("100k integers", sort, integers100k);
-        benchmarkFunction("1m integers", sort, integers1m);
+        benchmarkFunction("250k integers", sort, integers250k);
     }
 
     console.log("");

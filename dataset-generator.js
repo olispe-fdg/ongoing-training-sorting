@@ -11,8 +11,8 @@ const writeJsonSync = (path, data) => fs.writeFileSync(path + ".json", JSON.stri
 
 const randomIntegers10k = getRandomSequence(() => getRandomInteger(0, 10000), 10_000);
 const randomIntegers100k = getRandomSequence(() => getRandomInteger(0, 10000), 100_000);
-const randomIntegers1m = getRandomSequence(() => getRandomInteger(0, 10000), 1_000_000);
+const randomIntegers250k = getRandomSequence(() => getRandomInteger(0, 10000), 250_000);
 
 writeJsonSync("integers-10k", randomIntegers10k);
 writeJsonSync("integers-100k", randomIntegers100k);
-writeJsonSync("integers-1m", randomIntegers1m);
+writeJsonSync("integers-250k", randomIntegers250k);

@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run algorithms w/ benchmarks" type="NodeJSConfigurationType" path-to-js-file="algorithms.js" working-dir="$PROJECT_DIR$">
+    <envs>
+      <env name="RUN_BENCHMARKS" value="true" />
+    </envs>
+    <method v="2" />
+  </configuration>
+</component>
