@@ -1,3 +1,7 @@
+const integers10k = require("./integers-10k.json");
+const integers100k = require("./integers-100k.json");
+const integers1m = require("./integers-1m.json");
+
 /**
  * Asserts that an array is sorted in ascending order
  * @param arr {number[]}
@@ -15,6 +19,12 @@ const swap = (arr, from, to) => {
     const tmp = arr[to];
     arr[to] = arr[from];
     arr[from] = tmp;
+}
+
+const benchmarkFunction = (label, fn, ...args) => {
+    console.time(label);
+    fn(...args);
+    console.timeEnd(label);
 }
 
 /**
@@ -92,12 +102,22 @@ const algorithms = {
     mergeSort
 };
 
-const data = [4, 2, 1, 3, 0];
+const testData = [4, 2, 1, 3, 0];
 
 Object.entries(algorithms).forEach(([name, sort]) => {
-    const sorted = sort(data);
+    const sorted = sort(testData);
+    const correct = isSorted(sorted);
+
     console.log(`-- ${name} --`);
-    console.log(`  Input : ${data}`);
-    console.log(` Output : ${sorted}`);
-    console.log(`Correct : ${isSorted(sorted)}\n`);
+    console.log(`  input: ${testData}`);
+    console.log(` output: ${sorted}`);
+    console.log(`correct: ${correct}`);
+
+    if (correct && process.env.RUN_BENCHMARKS) {
+        benchmarkFunction("10k integers", sort, integers10k);
+        benchmarkFunction("100k integers", sort, integers100k);
+        benchmarkFunction("1m integers", sort, integers1m);
+    }
+
+    console.log("");
 })
