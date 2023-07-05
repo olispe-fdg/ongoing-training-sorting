@@ -62,12 +62,37 @@ const insertionSort = (arr) => {
     return copy;
 }
 
+/**
+ * Merge sort
+ * @param arr {number[]}
+ * @returns {number[]}
+ */
+const mergeSort = (arr) => {
+    const copy = [...arr];
+
+    for (let binSize = 1; binSize <= copy.length; binSize *= 2) {
+        for (let leftHead = 0; leftHead < copy.length; leftHead += binSize * 2) {
+            const rightHead = leftHead + binSize;
+
+            const leftBin = copy.slice(leftHead, rightHead);
+            const rightBin = copy.slice(rightHead, rightHead + binSize);
+
+            for (let i = leftHead; i < binSize * 2 && i < copy.length; i++) {
+                copy[i] = leftBin[0] < rightBin[0] || rightBin.length < 1 ? leftBin.shift() : rightBin.shift();
+            }
+        }
+    }
+
+    return copy;
+}
+
 const algorithms = {
     selectionSort,
-    insertionSort
+    insertionSort,
+    mergeSort
 };
 
-const data = [4, 2, 1, 3];
+const data = [4, 2, 1, 3, 0];
 
 Object.entries(algorithms).forEach(([name, sort]) => {
     const sorted = sort(data);
